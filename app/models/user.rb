@@ -1,14 +1,14 @@
 class User < ApplicationRecord
     
-    VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/
+    VALID_EMAIL_REGEX = /[a-zA-Z0-9._+]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+/
     validates :name, presence: true, length: { maximum: 15 }
-    validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
+    validates :email, format: {with: VALID_EMAIL_REGEX}
     
     
-    VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])[a-z\d]{8,32}+\z/
+    VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/
     
-    validates :password, presence: true, length: { in: 8..32 }, format: { with: VALID_PASSWORD_REGEX}
-    validates :password_confirmation, presence: true, length: { in: 8..32 }, format: { with: VALID_PASSWORD_REGEX}
+    validates :password, format: { with: VALID_PASSWORD_REGEX}
+    #:password_confirmationはいらない（そもそも完全一致しないとうけつけないから）
     
     has_secure_password
     
