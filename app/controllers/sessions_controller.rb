@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: user_params[:email])
+    user = User.find_by(email: session_params[:email])
     #ここ(user.auth~)もストロングパラメータにする
     if user && user.authenticate(session_params[:password])
       log_in user
@@ -20,13 +20,9 @@ class SessionsController < ApplicationController
   end
   
   
-  private
-  def user_params
-    params.require(:session).permit(:email)
-  end
-  
+  private 
   def session_params
-    params.require(:session).permit(:password)
+    params.require(:session).permit(:password, :email)
   end
   
   def log_in(user)
