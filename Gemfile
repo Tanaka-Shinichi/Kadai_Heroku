@@ -65,6 +65,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
 gem 'bcrypt'
-gem "carrierwave"
+gem "carrierwave", '~> 1.1.0'
 
-gem 'fog-aws'
+gem 'fog-aws', '~> 2.0.0'
+
+
