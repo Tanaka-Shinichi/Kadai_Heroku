@@ -57,7 +57,9 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg',             '0.18.0'
+  gem 'rails_12factor', '0.0.2'
+  gem 'fog-aws'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -65,8 +67,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
 gem 'bcrypt'
-gem "carrierwave", '~> 1.1.0'
+gem "carrierwave"
 
-gem 'fog-aws', '~> 2.0.0'
+gem 'fog-aws'
+
+gem 'mini_magick'
 
 
